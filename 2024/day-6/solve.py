@@ -65,7 +65,6 @@ def trick_guard(grid, row, col):
         row, col = new_row, new_col
         potential_trap = ROTATION_TABLE[direction]
         result += is_circular(grid, potential_trap, row, col, (row, col))
-        print(result)
         # target = DIRECTION_TO_ARROW[potential_trap]
         # result += serach_in_direction(potential_trap, target, row, col)
     return result
@@ -85,8 +84,12 @@ def is_circular(grid, direction, row, col, goal):
 
         seen.add((row, col))
         row, col = new_row, new_col
-        if (row, col) in seen:
+        if (row, col) == goal:
+            print("Worked!!")
+            print(goal)
             return 1
+        if (row, col) in seen:
+            return 0
 
 
 # Attempt to figure out if we would end up on the same path did not work somehow
